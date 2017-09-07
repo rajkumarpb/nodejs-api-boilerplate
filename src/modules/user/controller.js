@@ -1,57 +1,53 @@
-import model from './model'
+import Model from './model'
 
 class Controller {
-  constructor () {}
-
   getOne (id) {
-    return model
+    return Model
       .findById(id)
       .exec()
   }
 
   findOne (filter) {
-    return model
+    return Model
       .findOne(filter)
       .exec()
   }
 
   getAll () {
-    return model
+    return Model
       .find()
       .exec()
   }
 
   create (data) {
-    return new model(data)
+    return new Model(data)
       .save()
   }
 
   async update (id, data) {
-    let entity = await this.getOne(id)
+    const entity = await this.getOne(id)
 
     if (entity) {
-      let entity = await model
+      const entity = await Model
         .findOneAndUpdate({ _id: id }, data, { new: true })
         .exec()
 
       return entity
-    } else {
-      throw Error (`ID ${id} not found`)
     }
+    throw Error(`ID ${id} not found`)
   }
 
   async delete (id) {
-    let entity = await this.getOne(id)
-    
+    const entity = await this.getOne(id)
+
     if (entity) {
-      let entity = await model
+      const entity = await Model
         .findOneAndRemove({ _id: id })
         .exec()
 
       return entity
-    } else {
-      throw Error (`ID ${id} not found`)
     }
+    throw Error(`ID ${id} not found`)
   }
 }
 

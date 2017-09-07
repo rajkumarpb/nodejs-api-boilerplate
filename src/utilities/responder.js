@@ -1,5 +1,5 @@
 class Responder {
-  success (message, data) {
+  static success (message, data) {
     return {
       status: true,
       message,
@@ -7,7 +7,7 @@ class Responder {
     }
   }
 
-  error (message, data) {
+  static error (message, data) {
     return {
       status: false,
       message,

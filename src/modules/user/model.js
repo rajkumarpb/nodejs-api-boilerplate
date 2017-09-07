@@ -12,7 +12,7 @@ schema.plugin(timestamps)
 
 // triggers =====================
 schema.pre('save', function (next) {
-  let user = this
+  const user = this
 
   user.password = user.generateHash(user.password)
 
@@ -21,14 +21,14 @@ schema.pre('save', function (next) {
 
 // methods ======================
 // generating a hash
-schema.methods.generateHash = function(password) {
-  return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null);
-};
+schema.methods.generateHash = function (password) {
+  return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null)
+}
 
 // checking if password is valid
-schema.methods.comparePassword = function(password) {
-  return bcrypt.compareSync(password, this.password);
-};
+schema.methods.comparePassword = function (password) {
+  return bcrypt.compareSync(password, this.password)
+}
 
 const model = mongoose.model('User', schema)
 export default model
