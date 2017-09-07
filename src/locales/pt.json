@@ -1,0 +1,12 @@
+{
+	"{{type}} retrieved successfully": "{{type}} obtido com sucesso",
+	"{{type}} not retrieved": "{{type}} não obtido",
+	"{{type}} created successfully": "{{type}} criado com sucesso",
+	"{{type}} not created": "{{type}} não criado",
+	"{{type}} updated successfully": "{{type}} atualizado com sucesso",
+	"{{type}} not updated": "{{type}} não atualizado",
+	"{{type}} removed successfully": "{{type}} removido com sucesso",
+	"{{type}} not removed": "{{type}} não removido",
+	"User could not login": "Utilizador não autenticado",
+	"User logged in successfully": "Utilizador autenticado com sucesso"
+}
