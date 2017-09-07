@@ -1,7 +1,7 @@
 Nodejs API Boilerplate
 ==================================
 
-This is a straightforward boilerplate for building REST APIs with ES6 and Express.
+Simple NodeJS API boilerplate to quickstart my projects
 
 - ES6 support via [babel](https://babeljs.io)
 - CORS support via [cors](https://github.com/troygoode/node-cors)
