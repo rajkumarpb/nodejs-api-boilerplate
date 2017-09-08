@@ -3,6 +3,10 @@
   "version": "0.0.1",
   "description": "Starter project for an ES6 RESTful Express API",
   "main": "dist",
+  "engines": {
+    "node": "~8.0.0",
+    "npm": "~5.3.0"
+  },
   "scripts": {
     "dev": "nodemon -w src --exec 'eslint src && babel-node src --presets es2015,stage-0'",
     "build": "babel src -s -D -d dist --presets es2015,stage-0",
