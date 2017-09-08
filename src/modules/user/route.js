@@ -13,7 +13,7 @@ class Route {
 
   getOne (req, res) {
     return this.controller.getOne(req.param.id)
-      .then(r => res.json(this.responder.success(req.__('{{type}} retrieved successfully', { type: this.type }), r)))
+      .then(r => res.json(this.responder.success(res.__('{{type}} retrieved successfully', { type: this.type }), r)))
       .catch(e => res.json(this.responder.error(res.__('{{type}} not retrieved', { type: this.type }), e)))
   }
 

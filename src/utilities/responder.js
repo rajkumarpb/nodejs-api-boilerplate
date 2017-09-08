@@ -18,5 +18,4 @@ class Responder {
   }
 }
 
-const responder = new Responder()
-export default responder
+export default Responder

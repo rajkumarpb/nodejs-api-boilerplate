@@ -4,13 +4,13 @@ import { Router } from 'express'
 import { version } from '../../package.json'
 
 export default ({
-  responder, passport
+  Responder, passport
 }) => {
   const api = Router()
 
   // create the objects
-  const auth = new Auth(Router(), responder, passport)
-  const user = new User(Router(), responder, passport)
+  const auth = new Auth(Router(), Responder, passport)
+  const user = new User(Router(), Responder, passport)
 
   // mount the modules
   api.use('/auth', auth.router)

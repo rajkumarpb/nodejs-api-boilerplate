@@ -1,0 +1,18 @@
+{
+	"PORT": 3000,
+
+	"CORS_ORIGIN": "https://www.google.com,https://www.twitch.com",
+
+	"API_URL": "https://wwww.some-api.com",
+	"WEBSITE_URL": "https://www.some-website.com",
+
+	"JWT_SECRET": "somesupersecretkey",
+
+	"DATABASE_MONGO_URI": "mongodb://localhost/myapp",
+
+	"EMAIL_FROM": "itsme@mario.pt",
+	"EMAIL_MAILER_HOST": "smtp.gmail.com",
+	"EMAIL_MAILER_PORT": 465,
+	"EMAIL_MAILER_AUTH_USER": "mrpaws@gmail.com",
+	"EMAIL_MAILER_AUTH_PASS": "luidgiownsmemymushrooms"
+}

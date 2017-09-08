@@ -7,10 +7,12 @@ import bodyParser from 'body-parser'
 import initializeDb from './db'
 import middleware from './middleware'
 import api from './api'
-import config from './config.json'
-import responder from './utilities/responder'
-import passport from './passport'
+import config from './config/index'
+import Responder from './utilities/responder'
+import Passport from './passport'
 import i18n from 'i18n'
+
+let passport = Passport(config)
 
 i18n.configure({
   locales: ['en', 'pt'],
@@ -29,12 +31,12 @@ app.use(cors({
 }))
 
 app.use(bodyParser.json({
-  limit: config.bodyLimit
+  limit: config.parser.bodyLimit
 }))
 
 app.use(bodyParser.urlencoded({
   extended: true,
-  limit: config.bodyLimit
+  limit: config.parser.bodyLimit
 }))
 
 app.use(passport.initialize())
@@ -42,7 +44,7 @@ app.use(passport.initialize())
 app.use(i18n.init)
 
 // connect to db
-initializeDb((db) => {
+initializeDb(config, db => {
   // internal middleware
   app.use(middleware({ config, db }))
 
@@ -52,10 +54,10 @@ initializeDb((db) => {
 
   // api
   app.use('/api', api({
-    config, db, responder, passport
+    Responder, passport
   }))
 
-  app.server.listen(process.env.PORT || config.port, () => {
+  app.server.listen(config.port, () => {
     console.log(`Started on port ${app.server.address().port}`)
   })
 })
