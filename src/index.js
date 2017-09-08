@@ -10,14 +10,35 @@ import api from './api'
 import config from './config/index'
 import Responder from './utilities/responder'
 import Passport from './passport'
-import i18n from 'i18n'
+import i18next from 'i18next'
+import i18nextMiddleware, {
+  LanguageDetector
+} from 'i18next-express-middleware'
+import i18nextBackend from 'i18next-node-fs-backend'
 
 let passport = Passport(config)
 
-i18n.configure({
-  locales: ['en', 'pt'],
-  directory: path.resolve(__dirname, './locales')
-})
+i18next
+  .use(LanguageDetector)
+  .use(i18nextBackend)
+  .init({
+    preload: ['en', 'pt'],
+    ns: ['common'],
+    fallbackNS: 'common',
+    fallbackLng: 'en',
+    saveMissing: true,
+    saveMissingTo: 'current',
+    backend: {
+      loadPath: path.resolve(__dirname, './locales/{{lng}}/{{ns}}.json'),
+      addPath: path.resolve(
+        __dirname,
+        './locales/{{lng}}/{{ns}}.missing.json'
+      )
+    }
+  }, (err, t) => {
+    if (err) return console.log('something went wrong loading', err)
+    t('key')
+  })
 
 const app = express()
 app.server = http.createServer(app)
@@ -41,7 +62,7 @@ app.use(bodyParser.urlencoded({
 
 app.use(passport.initialize())
 
-app.use(i18n.init)
+app.use(i18nextMiddleware.handle(i18next))
 
 // connect to db
 initializeDb(config, db => {

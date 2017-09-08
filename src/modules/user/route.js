@@ -13,32 +13,32 @@ class Route {
 
   getOne (req, res) {
     return this.controller.getOne(req.param.id)
-      .then(r => res.json(this.responder.success(res.__('{{type}} retrieved successfully', { type: this.type }), r)))
-      .catch(e => res.json(this.responder.error(res.__('{{type}} not retrieved', { type: this.type }), e)))
+      .then(r => res.json(this.responder.success(req.t('{{type}} retrieved successfully', { type: this.type }), r)))
+      .catch(e => res.json(this.responder.error(req.t('{{type}} not retrieved', { type: this.type }), e)))
   }
 
   getAll (req, res) {
     return this.controller.getAll()
-      .then(r => res.json(this.responder.success(res.__('{{type}} retrieved successfully', { type: this.type }), r)))
-      .catch(e => res.json(this.responder.error(res.__('{{type}} not retrieved', { type: this.type }), e)))
+      .then(r => res.json(this.responder.success(req.t('{{type}} retrieved successfully', { type: this.type }), r)))
+      .catch(e => res.json(this.responder.error(req.t('{{type}} not retrieved', { type: this.type }), e)))
   }
 
   create (req, res) {
     return this.controller.create(req.body)
-      .then(r => res.json(this.responder.success(res.__('{{type}} created successfully', { type: this.type }), r)))
-      .catch(e => res.json(this.responder.error(res.__('{{type}} not created', { type: this.type }), e)))
+      .then(r => res.json(this.responder.success(req.t('{{type}} created successfully', { type: this.type }), r)))
+      .catch(e => res.json(this.responder.error(req.t('{{type}} not created', { type: this.type }), e)))
   }
 
   update (req, res) {
     return this.controller.update(req.params.id, req.body)
-      .then(r => res.json(this.responder.success(res.__('{{type}} updated successfully', { type: this.type }), r)))
-      .catch(e => res.json(this.responder.error(res.__('{{type}} not updated', { type: this.type }), e)))
+      .then(r => res.json(this.responder.success(req.t('{{type}} updated successfully', { type: this.type }), r)))
+      .catch(e => res.json(this.responder.error(req.t('{{type}} not updated', { type: this.type }), e)))
   }
 
   delete (req, res) {
     return this.controller.delete(req.params.id)
-      .then(r => res.json(this.responder.success(res.__('{{type}} removed successfully', { type: this.type }), r)))
-      .catch(e => res.json(this.responder.error(res.__('{{type}} not removed', { type: this.type }), e)))
+      .then(r => res.json(this.responder.success(req.t('{{type}} removed successfully', { type: this.type }), r)))
+      .catch(e => res.json(this.responder.error(req.t('{{type}} not removed', { type: this.type }), e)))
   }
 
   init () {

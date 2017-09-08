@@ -13,8 +13,8 @@ class Route {
 
   login (req, res) {
     return this.controller.login(req.body)
-      .then(r => res.json(this.responder.success(req.__(`${this.$type} logged in successfully`, { type: this.type }), r)))
-      .catch(e => res.json(this.responder.error(req.__(`${this.$type} could not login`, { type: this.type }), e)))
+      .then(r => res.json(this.responder.success(req.t(`${this.$type} logged in successfully`, { type: this.type }), r)))
+      .catch(e => res.json(this.responder.error(req.t(`${this.$type} could not login`, { type: this.type }), e)))
   }
 
   init () {
