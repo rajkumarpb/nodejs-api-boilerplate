@@ -1,1 +1,12 @@
-{}
+{
+	"{{type}} retrieved successfully": "{{type}} retrieved successfully",
+	"{{type}} not retrieved": "{{type}} not retrieved",
+	"{{type}} created successfully": "{{type}} created successfully",
+	"{{type}} not created": "{{type}} not created",
+	"{{type}} updated successfully": "{{type}} updated successfully",
+	"{{type}} not updated": "{{type}} not updated",
+	"{{type}} removed successfully": "{{type}} removed successfully",
+	"{{type}} not removed": "{{type}} not removed",
+	"User could not login": "User could not login",
+	"User logged in successfully": "User logged in successfully"
+}
